@@ -12,4 +12,66 @@
   <img width="303px" height="332px" alt="image_led_blue" src="https://github.com/user-attachments/assets/6d79d5e8-31b4-4923-9a5a-9f10cfb1fda0">
 </div>
 <h2>Codes:</h2>
-  
+<code>
+const int led_vermelho = 10;
+const int led_azul = 9;
+const int led_verde = 5;
+
+// Tempo de cada etapa
+int tempo = 1000;
+
+// Sequência: 1 = Azul | 2 = Vermelho | 3 = Verde
+int sequencia[] = {1, 2, 3, 4, 5, 6, 7};
+int tamanho = 7;
+
+void setup() {
+  pinMode(led_azul, OUTPUT);
+  pinMode(led_verde, OUTPUT);
+  pinMode(led_vermelho, OUTPUT);
+}
+
+void loop() {
+
+  for (int i = 0; i < tamanho; i++) {
+
+    // Desliga todos
+    analogWrite(led_vermelho, 0);
+    analogWrite(led_azul, 0);
+    analogWrite(led_verde, 0);
+
+    // Liga conforme a sequência
+    if (sequencia[i] == 1) { // Azul
+      analogWrite(led_azul, 255);
+      analogWrite(led_verde, 0);
+      analogWrite(led_vermelho, 0);
+    } 
+    else if (sequencia[i] == 2) { // Vermelho
+      analogWrite(led_azul, 0);
+      analogWrite(led_verde, 0);
+      analogWrite(led_vermelho, 255);
+    } 
+    else if (sequencia[i] == 3) { // Verde
+      analogWrite(led_azul, 0);
+      analogWrite(led_verde, 255);
+      analogWrite(led_vermelho, 0);
+    }else if(sequencia[i] == 4){
+      analogWrite(led_azul, 255);
+      analogWrite(led_verde, 0);
+      analogWrite(led_vermelho, 255);
+    }else if(sequencia[i] == 5){
+      analogWrite(led_azul, 0);
+      analogWrite(led_verde, 255);
+      analogWrite(led_vermelho, 255);
+    }else if(sequencia[i] == 6){
+      analogWrite(led_azul, 255);
+      analogWrite(led_verde, 255);
+      analogWrite(led_vermelho, 0);
+    }else if(sequencia[i] == 7){
+      analogWrite(led_azul, 255);
+      analogWrite(led_verde, 255);
+      analogWrite(led_vermelho, 255);
+    }
+    delay(tempo);
+  }
+}
+</code>
